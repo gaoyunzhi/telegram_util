@@ -2,12 +2,13 @@
 # -*- coding: utf-8 -*-
 
 import traceback as tb
+import urllib.request
 
 name = 'telegram_util'
 
 debug_group = -1001198682178
 
-def log_on_fail(error_to_ignore=[]):
+def log_on_fail(updater = None, error_to_ignore=[]):
 	def decorate(f):
 		def applicator(*args, **kwargs):
 			try:
@@ -17,7 +18,8 @@ def log_on_fail(error_to_ignore=[]):
 					return
 				print(e)
 				tb.print_exc()
-				updater.bot.send_message(chat_id=debug_group, text=str(e)) 
+				if updater:
+					updater.bot.send_message(chat_id=debug_group, text=str(e)) 
 		return applicator
 	return decorate
 
