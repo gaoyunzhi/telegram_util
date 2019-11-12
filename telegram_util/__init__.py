@@ -16,7 +16,7 @@ def matchKey(t, keys):
 	return False
 
 def isUrl(t):
-	for key in ['telegra.ph', 'com/']:
+	for key in ['telegra.ph', 'com/', 'org/', '.st/', 'http', 't.co/']:
 		if key in t:
 			return True
 	return False
@@ -28,10 +28,12 @@ def parseUrl(t):
 			continue
 		if '://' in x:
 			x = x[x.find('://') + 3:]
+		else:
+			r = r.replace(x, 'https://'+ x)
 		for s in x.split('/'):
 			if '?' in s:
 				continue
-			r = r.replace(x, urllib.request.pathname2url(x))
+			r = r.replace(s, urllib.request.pathname2url(s))
 	return r
 
 def isMeaningful(msg):
