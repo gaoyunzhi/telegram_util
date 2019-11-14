@@ -3,6 +3,7 @@
 
 import traceback as tb
 import urllib.request
+import threading
 
 name = 'telegram_util'
 
