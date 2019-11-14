@@ -23,7 +23,28 @@ def log_on_fail(updater = None, error_to_ignore=[]):
 		return applicator
 	return decorate
 
+def splitCommand(text):
+    pieces = text.split()
+    if len(pieces) < 1:
+        return '', ''
+    command = pieces[0]
+    return command.lower(), text[text.find(command) + len(command):].strip()
 
+def tryDelete(msg):
+    try:
+        msg.delete()
+    except:
+        pass
+
+def tryDeleteById(chat_id, msg_id):
+    try:
+        updater.bot.delete_message(chat_id = chat_id, message_id = msg_id)
+    except:
+        pass
+
+def autoDestroy(msg):
+    threading.Timer(60, lambda: tryDelete(msg)).start() 
+    
 def matchKey(t, keys):
 	if not t:
 		return False
