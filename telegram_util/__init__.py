@@ -24,6 +24,16 @@ def log_on_fail(updater = None, error_to_ignore=[]):
 		return applicator
 	return decorate
 
+def getDisplayUser(user):
+    result = ''
+    if user.first_name:
+        result += user.first_name
+    if user.last_name:
+        result += ' ' + user.last_name
+    if user.username:
+        result += ' (' + user.username + ')'
+    return '[' + result + '](tg://user?id=' + str(user.id) + ')'
+
 def splitCommand(text):
     pieces = text.split()
     if len(pieces) < 1:
@@ -37,13 +47,9 @@ def tryDelete(msg):
     except:
         pass
 
-def tryDeleteById(chat_id, msg_id):
-    try:
-        updater.bot.delete_message(chat_id = chat_id, message_id = msg_id)
-    except:
-        pass
-
 def autoDestroy(msg):
+    if msg.chat_id > 0:
+        return
     threading.Timer(60, lambda: tryDelete(msg)).start() 
     
 def matchKey(t, keys):
