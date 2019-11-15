@@ -7,9 +7,7 @@ import threading
 
 name = 'telegram_util'
 
-debug_group = -1001198682178
-
-def log_on_fail(updater = None, error_to_ignore=[]):
+def log_on_fail(debug_group = None, error_to_ignore=[]):
 	def decorate(f):
 		def applicator(*args, **kwargs):
 			try:
@@ -19,8 +17,8 @@ def log_on_fail(updater = None, error_to_ignore=[]):
 					return
 				print(e)
 				tb.print_exc()
-				if updater:
-					updater.bot.send_message(chat_id=debug_group, text=str(e)) 
+				if debug_group:
+					debug_group.send_message(text=str(e)) 
 		return applicator
 	return decorate
 
