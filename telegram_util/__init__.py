@@ -47,10 +47,10 @@ def tryDelete(msg):
     except:
         pass
 
-def autoDestroy(msg):
+def autoDestroy(msg, minutes=1):
     if msg.chat_id > 0:
         return
-    threading.Timer(60, lambda: tryDelete(msg)).start() 
+    threading.Timer(minutes * 60, lambda: tryDelete(msg)).start() 
     
 def matchKey(t, keys):
 	if not t:
