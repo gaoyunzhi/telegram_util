@@ -54,7 +54,7 @@ def matchKey(t, keys):
 	if not t:
 		return False
 	for k in keys:
-		if k in t:
+		if k.lower() in t.lower():
 			return True
 	return False
 
