@@ -111,3 +111,11 @@ def getTmpFile(msg):
 	filename = 'tmp' + file.file_path.strip().split('/')[-1]
 	file.download(filename)
 	return filename
+
+def addToQueue(update, queue):
+	msg = update.effective_message 
+	if not msg or not msg.chat:
+		return
+	if msg.chat.id not in SUBSCRIPTION:
+		return
+	queue.append((msg.chat.id, msg.message_id))
