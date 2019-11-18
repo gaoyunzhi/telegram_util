@@ -90,12 +90,24 @@ def isMeaningful(msg):
 		return False
 	return len(msg.text) > 10
 
-def getTmpFile(msg):
+def _getFile(msg):
 	if msg.photo:
 		file = msg.photo[-1]
 	elif msg.video:
 		file = msg.video
-	filename = 'tmp' + file.get_file().file_path.strip().split('/')[-1]
-	file.get_file().download(filename)
-	return filename
+	if not file:
+		return
+	return file.get_file()
 
+def getFilePath(msg):
+	file = _getFile(msg)
+	if file:
+		return file.file_path
+
+def getTmpFile(msg):
+	file = _getFile(msg)
+	if not file:
+		return
+	filename = 'tmp' + file.file_path.strip().split('/')[-1]
+	file.download(filename)
+	return filename
