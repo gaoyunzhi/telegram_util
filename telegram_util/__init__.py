@@ -88,7 +88,7 @@ def isMeaningful(msg):
 		return False
 	if msg.text[0] == '/':
 		return False
-	if 'bot_ignore' in message.text:
+	if 'bot_ignore' in msg.text:
 		return False
 	return len(msg.text) > 10
 
