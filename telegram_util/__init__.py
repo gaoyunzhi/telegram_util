@@ -88,6 +88,8 @@ def isMeaningful(msg):
 		return False
 	if msg.text[0] == '/':
 		return False
+	if 'bot_ignore' in message.text:
+		return False
 	return len(msg.text) > 10
 
 def _getFile(msg):
@@ -112,10 +114,10 @@ def getTmpFile(msg):
 	file.download(filename)
 	return filename
 
-def addToQueue(update, queue):
+def addToQueue(update, queue, subscription):
 	msg = update.effective_message 
 	if not msg or not msg.chat:
 		return
-	if msg.chat.id not in SUBSCRIPTION:
+	if msg.chat.id not in subscription:
 		return
 	queue.append((msg.chat.id, msg.message_id))
