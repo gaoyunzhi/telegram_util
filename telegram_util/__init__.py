@@ -122,3 +122,11 @@ def addToQueue(update, queue, subscription):
 	if msg.chat.id not in subscription:
 		return
 	queue.append((msg.chat.id, msg.message_id))
+
+def getLinkFromMsg(msg)
+	for item in msg.entities:
+		if (item["type"] == "url"):
+			url = msg.text[item["offset"]:][:item["length"]]
+			if not '://' in url:
+				url = "https://" + url
+				return url
