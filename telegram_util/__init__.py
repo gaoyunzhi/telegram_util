@@ -129,4 +129,4 @@ def getLinkFromMsg(msg):
 			url = msg.text[item["offset"]:][:item["length"]]
 			if not '://' in url:
 				url = "https://" + url
-				return url
+			return url
