@@ -123,7 +123,7 @@ def addToQueue(update, queue, subscription):
 		return
 	queue.append((msg.chat.id, msg.message_id))
 
-def getLinkFromMsg(msg)
+def getLinkFromMsg(msg):
 	for item in msg.entities:
 		if (item["type"] == "url"):
 			url = msg.text[item["offset"]:][:item["length"]]
