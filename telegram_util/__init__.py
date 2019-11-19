@@ -125,7 +125,7 @@ def addToQueue(update, queue, subscription):
 
 def getLinkFromMsg(msg):
 	for item in msg.entities:
-		if (item["type"] == "url"):
+		if matchKey(item["type"], ['url', 'link']):
 			url = msg.text[item["offset"]:][:item["length"]]
 			if not '://' in url:
 				url = "https://" + url
