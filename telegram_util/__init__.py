@@ -93,6 +93,7 @@ def isMeaningful(msg):
 	return len(msg.text) > 10
 
 def _getFile(msg):
+	file = None
 	if msg.photo:
 		file = msg.photo[-1]
 	elif msg.video:
