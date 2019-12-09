@@ -7,6 +7,13 @@ import threading
 
 name = 'telegram_util'
 
+def formatChat(bot, chat_id):
+	s = bot.getChat(chat_id)
+	if s.username:
+		return '[' + s.title + '](t.me/' + str(s.username) + ')'
+	else:
+		return s.title
+
 def log_on_fail(debug_group = None, error_to_ignore=[]):
 	def decorate(f):
 		def applicator(*args, **kwargs):
