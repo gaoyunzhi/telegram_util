@@ -24,6 +24,15 @@ def getSoup(url):
     r = requests.get(url, headers=headers)
     return BeautifulSoup(r.text, 'html.parser')
 
+def getChat(bot, text):
+	text = text.split('/')[-1]
+	if not text.startswith('@'):
+		try:
+			int(text)
+		except:
+			text = "@" + text
+	return bot.getChat(text)	
+
 def formatChat(bot, chat_id):
 	s = bot.getChat(chat_id)
 	if s.username:
