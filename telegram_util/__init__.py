@@ -115,7 +115,7 @@ def parseUrl(t):
 def isMeaningful(msg):
 	if msg.media_group_id:
 		return False
-	if 'bot_ignore' in msg.text:
+	if msg.text and 'bot_ignore' in msg.text:
 		return False
 	if msg.photo:
 		return True
