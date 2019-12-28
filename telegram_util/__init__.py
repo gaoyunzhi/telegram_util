@@ -66,6 +66,8 @@ def getDisplayUser(user):
     return '[' + result + '](tg://user?id=' + str(user.id) + ')'
 
 def splitCommand(text):
+	if not text:
+		return '', ''
     pieces = text.split()
     if len(pieces) < 1:
         return '', ''
