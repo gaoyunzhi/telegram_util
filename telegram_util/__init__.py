@@ -119,7 +119,7 @@ def isMeaningful(msg):
 		return False
 	if msg.text and 'bot_ignore' in msg.text:
 		return False
-	if msg.photo or msg.document or msg.video:
+	if msg.photo or msg.document or msg.video or msg.poll:
 		return True
 	if not msg.text:
 		return False
