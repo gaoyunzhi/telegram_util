@@ -9,6 +9,12 @@ import requests
 
 name = 'telegram_util'
 
+TO_CLEAN = '#/?'
+def cleanFileName(name):
+	for x in TO_CLEAN:
+		name = name.replace(x, '')
+	return name
+
 def getSoup(url):
 	headers = {'Host':'telete.in',
 		'Connection':'keep-alive',
