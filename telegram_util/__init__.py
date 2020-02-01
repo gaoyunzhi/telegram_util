@@ -6,8 +6,14 @@ import urllib.request
 import threading
 from bs4 import BeautifulSoup
 import requests
+import re
 
 name = 'telegram_util'
+
+def isCN(title):
+	if re.search(u'[\u4e00-\u9fff]', title):
+		return True
+	return False
 
 TO_CLEAN = '#/?'
 def cleanFileName(name):
