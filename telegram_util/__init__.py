@@ -10,6 +10,15 @@ import re
 
 name = 'telegram_util'
 
+def cutCaption(quote, suffix, limit):
+	if len(quote) + len(suffix) > limit:
+		result = quote[:limit - len(suffix)] + '...' + suffix
+	else:
+		result = quote + suffix
+	result = result.replace('https://', '')
+	result = result.replace('http://', '')
+	return result
+
 def isCN(title):
 	if re.search(u'[\u4e00-\u9fff]', title):
 		return True
