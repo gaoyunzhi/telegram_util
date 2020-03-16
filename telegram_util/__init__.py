@@ -17,6 +17,7 @@ def cutCaption(quote, suffix, limit):
 		result = quote + suffix
 	result = result.replace('https://', '')
 	result = result.replace('http://', '')
+	result = result.replace('_', '')
 	return result
 
 def isCN(title):
