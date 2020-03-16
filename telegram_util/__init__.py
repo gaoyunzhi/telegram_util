@@ -53,14 +53,17 @@ def getChat(bot, text):
 			int(text)
 		except:
 			text = "@" + text
-	return bot.getChat(text)	
+	return bot.getChat(text)
+
+def getDisplayChat(bot, chat):
+	if chat.username:
+		return '[' + chat.title + '](t.me/' + str(chat.username) + ')'
+	else:
+		return chat.title
 
 def formatChat(bot, chat_id):
-	s = bot.getChat(chat_id)
-	if s.username:
-		return '[' + s.title + '](t.me/' + str(s.username) + ')'
-	else:
-		return s.title
+	chat = bot.getChat(chat_id)
+	return getDisplayChat(chat)
 
 def log_on_fail(debug_group = None, error_to_ignore=[]):
 	def decorate(f):
