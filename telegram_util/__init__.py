@@ -55,7 +55,7 @@ def getChat(bot, text):
 			text = "@" + text
 	return bot.getChat(text)
 
-def getDisplayChat(bot, chat):
+def getDisplayChat(chat):
 	if chat.username:
 		return '[' + chat.title + '](t.me/' + str(chat.username) + ')'
 	else:
