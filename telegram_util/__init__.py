@@ -10,6 +10,19 @@ import re
 
 name = 'telegram_util'
 
+def escapeMarkdown(text):
+	in_bracket = False
+	r = []
+	for x in text:
+		if x in ['[', '(']:
+			in_bracket = True
+		if x in [')', ']']:
+			in_bracket = False
+		if not in_bracket and x == '_':
+			r.append("\\")
+		r.append(x)
+	return ''.join(r)
+
 def cutCaption(quote, suffix, limit):
 	if len(quote) + len(suffix) > limit:
 		result = quote[:limit - len(suffix)] + '...' + suffix
@@ -17,7 +30,7 @@ def cutCaption(quote, suffix, limit):
 		result = quote + suffix
 	result = result.replace('https://', '')
 	result = result.replace('http://', '')
-	return result
+	return escapeMarkdown(result)
 
 def isCN(title):
 	if re.search(u'[\u4e00-\u9fff]', title):
