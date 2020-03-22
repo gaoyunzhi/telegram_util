@@ -24,10 +24,12 @@ def escapeMarkdown(text):
 	return ''.join(r)
 
 def cutCaption(quote, suffix, limit):
+	quote = quote.strip()
+	suffix = suffix.strip()
 	if len(quote) + len(suffix) > limit:
-		result = quote[:limit - len(suffix)] + '...' + suffix
+		result = quote[:limit - len(suffix)] + '... ' + suffix
 	else:
-		result = quote + suffix
+		result = quote + ' ' + suffix
 	result = result.replace('https://', '')
 	result = result.replace('http://', '')
 	return escapeMarkdown(result)
