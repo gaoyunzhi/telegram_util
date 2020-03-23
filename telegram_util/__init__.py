@@ -10,6 +10,17 @@ import re
 
 name = 'telegram_util'
 
+class AlbumResult(object):
+	def __init__(self):
+		self.imgs = []
+		self.cap = ''
+		self.video = ''
+		self.cap_html = '' # weibo status only
+		self.title = '' # weibo status only
+
+	def empty(self):
+		return (not self.imgs) and (not self.cap) and (not self.video)
+
 def escapeMarkdown(text):
 	in_bracket = False
 	r = []
