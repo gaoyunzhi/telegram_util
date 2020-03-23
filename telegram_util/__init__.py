@@ -29,7 +29,9 @@ def escapeMarkdown(text):
 def cutCaption(quote, suffix, limit):
 	quote = quote.strip()
 	suffix = suffix.strip()
-	if len(quote) + len(suffix) > limit:
+	if not quote:
+		result = suffix
+	elif len(quote) + len(suffix) > limit:
 		result = quote[:limit - len(suffix)] + '... ' + suffix
 	else:
 		result = quote + ' ' + suffix
