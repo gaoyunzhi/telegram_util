@@ -21,8 +21,8 @@ def escapeMarkdown(text):
 		if not in_bracket and x == '_':
 			r.append("\\")
 		r.append(x)
-	text = text.replace('`', '')
-	return ''.join(r)
+	text = ''.join(r)
+	return text.replace('`', '')
 
 def cutCaption(quote, suffix, limit):
 	quote = quote.strip()
