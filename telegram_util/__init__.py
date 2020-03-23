@@ -22,7 +22,9 @@ def escapeMarkdown(text):
 			r.append("\\")
 		r.append(x)
 	text = ''.join(r)
-	return text.replace('`', '')
+	for special_char in ['`', '*']:
+		text = text.replace(special_char, '')
+	return text
 
 def cutCaption(quote, suffix, limit):
 	quote = quote.strip()
