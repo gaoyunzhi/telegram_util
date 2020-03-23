@@ -22,10 +22,26 @@ def escapeMarkdown(text):
 			r.append("\\")
 		r.append(x)
 	text = ''.join(r)
-	for special_char in ['`', '*']:
+	for special_char in ['`', '*', 'https://', 'http://']:
 		text = text.replace(special_char, '')
+	text = text.replace('  ', ' ')
+	text = text.replace('\n ', '\n')
 	return text
 
+def clearUrl(url):
+	url = url.split('#')[0]
+	if 'weibo' in url and 'id=' not in url: 
+		url = url.split('?')[0]
+	if url.endswith('/'):
+		url = url[:-1]
+	return url
+
+def getWid(url):
+	url = clearUrl(url)
+	if 'id=' in url:
+		return url[url.find('id=') + 3:]
+	return url.split('/')[-1]
+		
 def cutCaption(quote, suffix, limit):
 	quote = quote.strip()
 	suffix = suffix.strip()
@@ -35,8 +51,6 @@ def cutCaption(quote, suffix, limit):
 		result = quote[:limit - len(suffix)] + '... ' + suffix
 	else:
 		result = quote + ' ' + suffix
-	result = result.replace('https://', '')
-	result = result.replace('http://', '')
 	return escapeMarkdown(result)
 
 def isCN(title):
