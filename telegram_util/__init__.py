@@ -21,6 +21,9 @@ class AlbumResult(object):
 	def empty(self):
 		return (not self.imgs) and (not self.cap) and (not self.video)
 
+	def __str__(self):
+		return '\t'.join([k + ':' + str(v) for (k,v) in self.__dict__.items() if v])
+
 def escapeMarkdown(text):
 	in_bracket = False
 	r = []
