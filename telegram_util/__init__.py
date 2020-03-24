@@ -40,7 +40,8 @@ def escapeMarkdown(text):
 	return text
 
 def clearUrl(url):
-	url = url.split('#')[0]
+	for end_char in ['#', '/?utm_source']:
+		url = url.split(end_char)[0]
 	if 'weibo' in url and 'id=' not in url: 
 		url = url.split('?')[0]
 	if url.endswith('/'):
