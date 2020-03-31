@@ -45,7 +45,7 @@ def escapeMarkdown(text):
 def clearUrl(url):
 	for end_char in ['#', '/?utm_source']:
 		url = url.split(end_char)[0]
-	if 'weibo' in url and 'id=' not in url: 
+	if url.matchKey('weibo', 'thepaper') and 'id=' not in url: 
 		url = url.split('?')[0]
 	if url.endswith('/'):
 		url = url[:-1]
