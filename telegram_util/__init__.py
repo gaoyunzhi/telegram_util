@@ -42,15 +42,6 @@ def escapeMarkdown(text):
 	text = text.replace('\n ', '\n')
 	return text
 
-def clearUrl(url):
-	for end_char in ['#', '/?utm_source']:
-		url = url.split(end_char)[0]
-	if url.matchKey('weibo', 'thepaper') and 'id=' not in url: 
-		url = url.split('?')[0]
-	if url.endswith('/'):
-		url = url[:-1]
-	return url
-
 def getWid(url):
 	url = clearUrl(url)
 	if 'id=' in url:
@@ -238,3 +229,12 @@ def getLinkFromMsg(msg):
 			if not '://' in url:
 				url = "https://" + url
 			return url
+
+def clearUrl(url):
+	for end_char in ['#', '/?utm_source']:
+		url = url.split(end_char)[0]
+	if matchKey(url, ['weibo', 'thepaper']) and 'id=' not in url: 
+		url = url.split('?')[0]
+	if url.endswith('/'):
+		url = url[:-1]
+	return url
