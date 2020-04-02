@@ -45,7 +45,7 @@ def escapeMarkdown(text):
 def getWid(url):
 	url = clearUrl(url)
 	if 'id=' in url:
-		return url[url.find('id=') + 3:]
+		return url[url.find('id=') + 3:].split('&')[0]
 	return url.split('/')[-1]
 		
 def cutCaption(quote, suffix, limit):
@@ -231,8 +231,11 @@ def getLinkFromMsg(msg):
 			return url
 
 def clearUrl(url):
-	for end_char in ['#', '/?utm_source']:
+	for end_char in ['/?utm_source']:
 		url = url.split(end_char)[0]
+	for end_char in ['#']:
+		if 'id=' not in url:
+			url = url.split(end_char)[0]
 	if matchKey(url, ['weibo', 'thepaper']) and 'id=' not in url: 
 		url = url.split('?')[0]
 	if url.endswith('/'):
