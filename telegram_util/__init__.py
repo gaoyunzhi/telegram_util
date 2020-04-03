@@ -101,8 +101,11 @@ def getDisplayChat(chat):
 		return chat.title
 
 def formatChat(bot, chat_id):
-	chat = bot.getChat(chat_id)
-	return getDisplayChat(chat)
+	try:
+		chat = bot.getChat(chat_id)
+		return getDisplayChat(chat)
+	except:
+		return str(chat_id)
 
 def log_on_fail(debug_group = None, error_to_ignore=[]):
 	def decorate(f):
