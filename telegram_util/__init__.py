@@ -141,10 +141,16 @@ def splitCommand(text):
 	command = pieces[0]
 	return command.lower(), text[text.find(command) + len(command):].strip()
 
+def tryDelete(msg):	
+	try:	
+		msg.delete()	
+	except:	
+		pass
+
 def autoDestroy(msg, minutes=1):
 	if msg.chat_id > 0:
 		return
-	threading.Timer(minutes * 60, lambda: msg.delete()).start() 
+	threading.Timer(minutes * 60, lambda: tryDelete(msg)).start() 
 	
 def matchKey(t, keys):
 	if not t:
