@@ -24,6 +24,13 @@ class AlbumResult(object):
 	def __str__(self):
 		return '\t'.join([k + ':' + str(v) for (k,v) in self.__dict__.items() if v])
 
+def cleanUrl(text):
+	for special_char in ['https://', 'http://']:
+		text = text.replace(special_char, '')
+	text = text.replace('  ', ' ')
+	text = text.replace('\n ', '\n')
+	return text
+
 def escapeMarkdown(text):
 	in_bracket = False
 	r = []
@@ -36,11 +43,9 @@ def escapeMarkdown(text):
 			r.append("\\")
 		r.append(x)
 	text = ''.join(r)
-	for special_char in ['`', '*', 'https://', 'http://']:
+	for special_char in ['`', '*']:
 		text = text.replace(special_char, '')
-	text = text.replace('  ', ' ')
-	text = text.replace('\n ', '\n')
-	return text
+	return cleanUrl(text)
 
 def getWid(url):
 	url = clearUrl(url)
