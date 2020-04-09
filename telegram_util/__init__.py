@@ -28,7 +28,11 @@ def cleanUrl(text):
 	for special_char in ['https://', 'http://']:
 		text = text.replace(special_char, '')
 	text = text.replace('  ', ' ')
-	text = text.replace('\n ', '\n')
+	for _ in range(10):
+		text = text.replace('\n ', '\n')
+		text = text.replace(' \n', '\n')
+	for _ in range(10):	
+		text = text.replace('\n\n\n', '\n\n')
 	return text
 
 def escapeMarkdown(text):
