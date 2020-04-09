@@ -33,7 +33,7 @@ def cleanUrl(text):
 		text = text.replace(' \n', '\n')
 	for _ in range(10):	
 		text = text.replace('\n\n\n', '\n\n')
-	return text
+	return text.strip()
 
 def escapeMarkdown(text):
 	in_bracket = False
