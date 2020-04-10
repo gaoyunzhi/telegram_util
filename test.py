@@ -4,7 +4,7 @@
 from telegram_util import getWid
 
 def _test():
-	print(getWid('https://card.weibo.com/article/h5/s#cid=2309404484832922042566&vid=1352220641'))
+	print(getWid('http://weibointl.api.weibo.cn/share/138804312.html?weibo_id=4492279152896775&from=groupmessage&isappinstalled=0'))
 
 if __name__=='__main__':
 	_test()
