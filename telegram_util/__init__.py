@@ -51,7 +51,6 @@ def escapeMarkdown(text):
 
 def getWid(url):
 	url = clearUrl(url)
-	print(url)
 	if 'id=' in url:
 		return url[url.find('id=') + 3:].split('&')[0]
 	return url.split('/')[-1]

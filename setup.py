@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="telegram_util",
-    version="0.0.60",
+    version="0.0.61",
     author="Yunzhi Gao",
     author_email="gaoyunzhi@gmail.com",
     description="Telegram Util.",
