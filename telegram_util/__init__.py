@@ -241,7 +241,7 @@ def getLinkFromMsg(msg):
 			return url
 
 def clearUrl(url):
-	for end_char in ['/?utm_source']:
+	for end_char in ['/?utm_source', '?mblogid']:
 		url = url.split(end_char)[0]
 	for end_char in ['#']:
 		if 'id=' not in url:
