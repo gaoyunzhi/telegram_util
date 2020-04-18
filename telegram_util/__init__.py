@@ -49,6 +49,7 @@ def escapeMarkdown(text):
 	text = ''.join(r)
 	for special_char in ['`', '*', 'https://', 'http://']:
 		text = text.replace(special_char, '')
+	text.replace('t.cn/', ' t.cn/')
 	return compactText(text)
 
 def getWid(url):
