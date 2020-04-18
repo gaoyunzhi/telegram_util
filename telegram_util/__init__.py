@@ -7,6 +7,7 @@ import threading
 from bs4 import BeautifulSoup
 import requests
 import re
+import time
 
 name = 'telegram_util'
 
