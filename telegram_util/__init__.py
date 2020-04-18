@@ -171,12 +171,12 @@ class TimedDeleter():
 	def delete(self, msg, minutes=0):
 		if minutes < 0.1:
 			return tryDelete(msg)
-		delete_time = time.time() + 60 * minutes
+		delete_time = time.time() + minutes # * 60
 		self.queue.append((delete_time, msg))
 		if not self.scheduled:
 			self.scheduled = True
 			print('schedule')
-			threading.Timer(minutes * 60 + 30, lambda: self.process).start() 
+			threading.Timer(delete_time - time.time() + 30, lambda: self.process).start() 
 
 	def process(self):
 		print('process')
