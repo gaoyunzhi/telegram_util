@@ -183,7 +183,7 @@ class TimedDeleter():
 			self.scheduled = False
 			return
 		self.queue.sort()
-		threading.Timer(self.queue[0] - time.time() + 11, lambda: self.process).start() 
+		threading.Timer(self.queue[0] - time.time() + 11, lambda: self.process()).start() 
 
 	def delete(self, msg, minutes=0):
 		if minutes < 0.1:
@@ -194,7 +194,7 @@ class TimedDeleter():
 			self.scheduled = True
 			print('schedule')
 			# change 11 to 30
-			threading.Timer(delete_time - time.time() + 11, lambda: self.process).start() 
+			threading.Timer(delete_time - time.time() + 11, lambda: self.process()).start() 
 
 
 def matchKey(t, keys):
