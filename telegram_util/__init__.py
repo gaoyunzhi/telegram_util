@@ -169,9 +169,9 @@ class TimedDeleter():
 		self.scheduled = False
 
 	def delete(self, msg, minutes=0):
-		if minute < 0.1:
+		if minutes < 0.1:
 			return tryDelete(msg)
-		delete_time = time.time() + 60 * minute
+		delete_time = time.time() + 60 * minutes
 		self.queue.append((delete_time, msg))
 		if not self.scheduled:
 			self.scheduled = True
