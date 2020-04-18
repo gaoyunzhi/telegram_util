@@ -161,7 +161,36 @@ def autoDestroy(msg, minutes=1):
 	if msg.chat_id > 0:
 		return
 	threading.Timer(minutes * 60, lambda: tryDelete(msg)).start() 
-	
+
+class TimedDeleter():
+	def __init__(self):
+		self.queue = []
+		self.scheduled = False
+
+	def delete(self, msg, minute=0):
+		if minute < 0.1:
+			return tryDelete(msg)
+		delete_time = time.time() + 60 * minute
+		self.queue.append((delete_time, msg))
+		if not self.scheduled:
+			self.scheduled = True
+			threading.Timer(minutes * 60 + 30, lambda: self.process).start() 
+
+	def process(self):
+		new_queue = []
+		while self.queue:
+			t, msg = self.queue.pop()
+			if t < time.time():
+				tryDelete(msg)
+			else:
+				new_queue.append((t, msg))
+		self.queue = new_queue
+		if not self.queue:
+			self.scheduled = False
+			return
+		self.queue.sort()
+		threading.Timer(self.queue[0] - time.time() + 30, lambda: self.process).start() 
+
 def matchKey(t, keys):
 	if not t:
 		return False
