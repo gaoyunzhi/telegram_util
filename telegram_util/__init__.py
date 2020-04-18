@@ -169,7 +169,6 @@ class TimedDeleter():
 		self.scheduled = False
 
 	def process(self):
-		print('process')
 		new_queue = []
 		while self.queue:
 			t, msg = self.queue.pop()
@@ -179,22 +178,19 @@ class TimedDeleter():
 				new_queue.append((t, msg))
 		self.queue = new_queue
 		if not self.queue:
-			print('end process')
 			self.scheduled = False
 			return
 		self.queue.sort()
-		threading.Timer(self.queue[0] - time.time() + 11, lambda: self.process()).start() 
+		threading.Timer(self.queue[0] - time.time() + 30, lambda: self.process()).start() 
 
 	def delete(self, msg, minutes=0):
 		if minutes < 0.1:
 			return tryDelete(msg)
-		delete_time = time.time() + minutes # * 60
+		delete_time = time.time() + minutes * 60
 		self.queue.append((delete_time, msg))
 		if not self.scheduled:
 			self.scheduled = True
-			print('schedule')
-			# change 11 to 30
-			threading.Timer(delete_time - time.time() + 11, lambda: self.process()).start() 
+			threading.Timer(delete_time - time.time() + 30, lambda: self.process()).start() 
 
 
 def matchKey(t, keys):
