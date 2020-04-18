@@ -175,9 +175,11 @@ class TimedDeleter():
 		self.queue.append((delete_time, msg))
 		if not self.scheduled:
 			self.scheduled = True
+			print('schedule')
 			threading.Timer(minutes * 60 + 30, lambda: self.process).start() 
 
 	def process(self):
+		print('process')
 		new_queue = []
 		while self.queue:
 			t, msg = self.queue.pop()
@@ -187,6 +189,7 @@ class TimedDeleter():
 				new_queue.append((t, msg))
 		self.queue = new_queue
 		if not self.queue:
+			print('end process')
 			self.scheduled = False
 			return
 		self.queue.sort()
