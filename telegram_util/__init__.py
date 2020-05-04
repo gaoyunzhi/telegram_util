@@ -8,13 +8,14 @@ from bs4 import BeautifulSoup
 import requests
 import re
 import time
+import datetime as dt
 
 name = 'telegram_util'
 
 def log(*args):
 	text = ' '.join([str(x) for x in args])
 	with open('nohup.out', 'a') as f:
-		f.write('%d:%d %s\n' % (datetime.now().hour, datetime.now().minute, text))
+		f.write('%d:%d %s\n' % (dt.datetime.now().hour, dt.datetime.now().minute, text))
 
 class AlbumResult(object):
 	def __init__(self):
