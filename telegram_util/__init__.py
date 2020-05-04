@@ -11,6 +11,11 @@ import time
 
 name = 'telegram_util'
 
+def log(*args):
+	text = ' '.join([str(x) for x in args])
+	with open('nohup.out', 'a') as f:
+		f.write('%d:%d %s\n' % (datetime.now().hour, datetime.now().minute, text))
+
 class AlbumResult(object):
 	def __init__(self):
 		self.imgs = []
