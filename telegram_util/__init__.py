@@ -38,7 +38,7 @@ def compactText(text):
 		text = text.replace('  ', ' ')
 		text = text.replace('\n ', '\n')
 		text = text.replace(' \n', '\n')
-		text = text.replace('\\xa0', ' ')
+		text = text.replace('\xa0', ' ')
 	for _ in range(10):	
 		text = text.replace('\n\n\n', '\n\n')
 	return text.strip()
