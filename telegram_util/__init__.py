@@ -12,6 +12,9 @@ import datetime as dt
 
 name = 'telegram_util'
 
+def cnWordCount(x):
+	return len([c for c in x if c.isalpha() and ord(c) > 255])
+
 def log(*args):
 	text = ' '.join([str(x) for x in args])
 	with open('nohup.out', 'a') as f:
