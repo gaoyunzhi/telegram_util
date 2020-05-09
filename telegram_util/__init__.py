@@ -176,7 +176,6 @@ def autoDestroy(msg, minutes=1):
 class TimedDeleter():
 	def __init__(self):
 		self.queue = []
-		self.scheduled = False
 
 	def process(self):
 		new_queue = []
@@ -188,19 +187,21 @@ class TimedDeleter():
 				new_queue.append((t, msg))
 		self.queue = new_queue
 		if not self.queue:
-			self.scheduled = False
 			return
 		self.queue.sort()
-		threading.Timer(self.queue[0][0] - time.time() + 30, lambda: self.process()).start() 
+		self.schedule()
 
 	def delete(self, msg, minutes=0):
 		if minutes < 0.1:
 			return tryDelete(msg)
 		delete_time = time.time() + minutes * 60
 		self.queue.append((delete_time, msg))
-		if not self.scheduled:
-			self.scheduled = True
-			threading.Timer(delete_time - time.time() + 30, lambda: self.process()).start() 
+		if len(self.queue) == 1
+			self.schedule()
+
+	def schedule(self):
+		time_gap = min(self.queue[0][0] - time.time() + 30, 5 * 60)
+		threading.Timer(time_gap, lambda: self.process()).start() 
 
 
 def matchKey(t, keys):
