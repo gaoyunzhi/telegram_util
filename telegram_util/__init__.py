@@ -196,7 +196,7 @@ class TimedDeleter():
 			return tryDelete(msg)
 		delete_time = time.time() + minutes * 60
 		self.queue.append((delete_time, msg))
-		if len(self.queue) == 1
+		if len(self.queue) == 1:
 			self.schedule()
 
 	def schedule(self):
