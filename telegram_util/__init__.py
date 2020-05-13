@@ -58,8 +58,9 @@ def escapeMarkdown(text):
 			r.append("\\")
 		r.append(x)
 	text = ''.join(r)
-	for special_char in ['`', '*', 'https://', 'http://']:
+	for special_char in ['`', 'https://', 'http://']:
 		text = text.replace(special_char, '')
+	text = text.replace('*', '\\*') # may need to revisit
 	text = text.replace('t.cn/', ' t.cn/')
 	return compactText(text)
 
