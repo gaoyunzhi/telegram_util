@@ -141,10 +141,10 @@ def log_on_fail(debug_group = None, error_to_ignore=[]):
 				tb.print_exc()
 				if debug_group:
 					debug_group.send_message(text=str(e)) 
-					# untested code
 					try:
 						exc_type, exc_value, exc_traceback = sys.exc_info()
-						debug_group.send_message(''.join(tb.format_tb(exc_traceback)))
+						debug_group.send_message(''.join(
+							tb.format_tb(exc_traceback)[1:]))
 					except Exception as e:
 						debug_group.send_message(text=str(e)) 
 		return applicator
