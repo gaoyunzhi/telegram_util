@@ -144,7 +144,7 @@ def log_on_fail(debug_group = None, error_to_ignore=[]):
 					try:
 						exc_type, exc_value, exc_traceback = sys.exc_info()
 						debug_group.send_message(''.join(
-							tb.format_tb(exc_traceback)[1:]))
+							tb.format_tb(exc_traceback)))
 					except Exception as e:
 						debug_group.send_message(text=str(e)) 
 		return applicator
