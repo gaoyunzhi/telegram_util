@@ -9,6 +9,7 @@ import requests
 import re
 import time
 import datetime as dt
+import sys
 
 name = 'telegram_util'
 
@@ -142,7 +143,8 @@ def log_on_fail(debug_group = None, error_to_ignore=[]):
 					debug_group.send_message(text=str(e)) 
 					# untested code
 					try:
-						debug_group.send_message(''.join(tb.format_tb()))
+						exc_type, exc_value, exc_traceback = sys.exc_info()
+						debug_group.send_message(''.join(tb.format_tb(exc_traceback)))
 					except Exception as e:
 						debug_group.send_message(text=str(e)) 
 		return applicator
