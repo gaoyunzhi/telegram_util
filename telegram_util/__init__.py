@@ -142,7 +142,7 @@ def log_on_fail(debug_group = None, error_to_ignore=[]):
 					debug_group.send_message(text=str(e)) 
 					# untested code
 					try:
-						debug_group.send_text(''.join(tb.format_tb()))
+						debug_group.send_message(''.join(tb.format_tb()))
 					except Exception as e:
 						debug_group.send_message(text=str(e)) 
 		return applicator
