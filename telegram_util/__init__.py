@@ -14,6 +14,15 @@ import os
 
 name = 'telegram_util'
 
+def parseDomain(url):
+	if not url:
+		return 
+	if not url.startswith('http'):
+		return
+	r = '/'.join(url.split('/')[:3])
+	if r.count('/') == 2 and 'http' in r:
+		return r
+
 def commitRepo():
     command = 'git add . > /dev/null 2>&1 && git commit -m commit > /dev/null 2>&1 && git push -u -f > /dev/null 2>&1'
     threading.Timer(60, lambda: os.system(command)).start()
