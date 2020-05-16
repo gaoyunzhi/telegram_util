@@ -10,8 +10,13 @@ import re
 import time
 import datetime as dt
 import sys
+import os
 
 name = 'telegram_util'
+
+def commitRepo():
+    command = 'git add . > /dev/null 2>&1 && git commit -m commit > /dev/null 2>&1 && git push -u -f > /dev/null 2>&1'
+    threading.Timer(60, lambda: os.system(command)).start()
 
 def cnWordCount(x):
 	return len([c for c in x if c.isalpha() and ord(c) > 255])
