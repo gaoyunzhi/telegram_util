@@ -14,6 +14,9 @@ import os
 
 name = 'telegram_util'
 
+def getBaseName(url):
+	return os.path.basename(url.replace('=', '.'))
+
 def parseDomain(url):
 	if not url:
 		return 
