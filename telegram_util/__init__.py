@@ -14,6 +14,11 @@ import os
 
 name = 'telegram_util'
 
+def removeOldFiles(dirname, day = 3):
+	for filename in os.listdir(dirname):
+		if os.path.getmtime(dirname + '/' + filename) < time.time() - 60 * 60 * 24 * day:
+			os.system('rm ' + dirname + '/' + filename)
+
 def parseDomain(url):
 	if not url:
 		return 
