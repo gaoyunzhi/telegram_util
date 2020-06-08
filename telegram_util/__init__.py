@@ -33,11 +33,11 @@ def parseDomain(url):
 		return r
 
 def commitRepo(delay_minute = 1):
-    command = 'git add . > /dev/null 2>&1 && git commit -m commit > /dev/null 2>&1 && git push -u -f > /dev/null 2>&1'
-    if delay_minute == 0:
-    	os.system(command)
-    else:
-    	threading.Timer(60 * delay_minute, lambda: os.system(command)).start()
+	command = 'git add . > /dev/null 2>&1 && git commit -m commit > /dev/null 2>&1 && git push -u -f > /dev/null 2>&1'
+	if delay_minute == 0:
+		os.system(command)
+	else:
+		threading.Timer(60 * delay_minute, lambda: os.system(command)).start()
 
 def cnWordCount(x):
 	return len([c for c in x if c.isalpha() and ord(c) > 255])
