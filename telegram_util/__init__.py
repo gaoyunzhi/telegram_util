@@ -56,6 +56,7 @@ class AlbumResult(object):
 		self.title = '' # weibo status only
 		self.wid = '' # weibo status only 
 		self.rwid = '' # weibo status only retweet id
+		self.hash = ''
 
 	def empty(self):
 		return (not self.imgs) and (not self.cap) and (not self.video)
