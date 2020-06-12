@@ -33,7 +33,14 @@ def parseDomain(url):
 		return r
 
 def commitRepo(delay_minute = 1):
-	command = 'git add . > /dev/null 2>&1 && git commit -m commit > /dev/null 2>&1 && git push -u -f > /dev/null 2>&1'
+	commands = [
+		'git add .',
+		'git commit -m commit',
+		'git fetch origin', 
+		'git rebase origin/master',
+		'git push -u -f',
+	]
+	command = ' && '.join([x + ' > /dev/null 2>&1' for x in commands])
 	if delay_minute == 0:
 		os.system(command)
 	else:
