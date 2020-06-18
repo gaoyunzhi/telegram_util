@@ -47,6 +47,8 @@ def commitRepo(delay_minute = 1):
 		threading.Timer(60 * delay_minute, lambda: os.system(command)).start()
 
 def cnWordCount(x):
+	if not x:
+		return 0
 	return len([c for c in x if c.isalpha() and ord(c) > 255])
 
 def log(*args):
