@@ -32,10 +32,10 @@ def parseDomain(url):
 	if r.count('/') == 2 and 'http' in r:
 		return r
 
-def commitRepo(delay_minute = 1):
+def commitRepo(delay_minute = 1, commit_message = 'auto_commit_db'):
 	commands = [
 		'git add .',
-		'git commit -m commit',
+		'git commit -m ' + commit_message,
 		'git fetch origin', 
 		'git rebase origin/master',
 		'git push -u -f',
