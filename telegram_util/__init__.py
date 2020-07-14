@@ -51,8 +51,11 @@ def cnWordCount(x):
 		return 0
 	return len([c for c in x if c.isalpha() and ord(c) > 255])
 
+def getLogStr(*args):
+	return ' '.join([str(x) for x in args])
+
 def log(*args):
-	text = ' '.join([str(x) for x in args])
+	text = getLogStr(*args)
 	with open('nohup.out', 'a') as f:
 		f.write('%d:%d %s\n' % (dt.datetime.now().hour, dt.datetime.now().minute, text))
 
