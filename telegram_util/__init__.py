@@ -147,13 +147,17 @@ def getSoup(url):
 	r = requests.get(url, headers=headers)
 	return BeautifulSoup(r.text, 'html.parser')
 
+def isInt(item):
+	try:
+		int(item)
+		return True
+	except:
+		return False
+
 def getChat(bot, text):
 	text = text.split('/')[-1]
-	if not text.startswith('@'):
-		try:
-			int(text)
-		except:
-			text = "@" + text
+	if not text.startswith('@') and not isInt(text):
+		text = "@" + text
 	return bot.getChat(text)
 
 def getDisplayChat(chat):
