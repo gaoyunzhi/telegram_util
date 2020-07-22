@@ -340,14 +340,12 @@ def getLinkFromMsg(msg):
 			return url
 
 def clearUrl(url):
-	for end_char in ['/?utm_source', '?mblogid']:
+	if not url:
+		return ''
+	for end_char in ['/?utm_source', '?mblogid', '&chksm=']:
 		url = url.split(end_char)[0]
-	for end_char in ['#']:
-		if 'id=' not in url:
-			url = url.split(end_char)[0]
-	url = url.split('&chksm=')[0]
+	if 'id=' not in url:
+		url = url.split('#')[0]
 	if matchKey(url, ['weibo', 'thepaper', 'm.sohu']) and 'id=' not in url: 
 		url = url.split('?')[0]
-	if url.endswith('/'):
-		url = url[:-1]
-	return url
+	return url.strip('/')
