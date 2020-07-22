@@ -24,6 +24,7 @@ def _test():
 def test2():
 	for url in ['https://www.lgbtqnation.com/2020/07/trump-administration-memo-explains-spot-transgender-woman/#.Xxhk4Z7ztRQ.wechat', 
 		'http://mp.weixin.qq.com/s?__biz=MzUxMzAzMzk5Ng==&mid=2247484807&idx=1&sn=101bde2cf3bfbee2dcbd1e842475e06a&chksm=f95a17e4ce2d9ef27a9dbdd6c59c831b45caa8658ac566cc2d3681216c83b0f9e28a7ed0dc3f&mpshare=1&scene=1&srcid=0723RKjQqOqqKU0gQFh4vs4S&sharer_sharetime=1595435039677&sharer_shareid=f467668849c8544e583567bf8a259f31#rd',
+		'https://mp.weixin.qq.com/s?__biz=MzA5MDM1MTcyNQ==&amp;mid=2657277726&amp;idx=1&amp;sn=613c0be79aebcd1ba714cbbbae64f66c&amp;chksm=8b9a861cbced0f0af93ef107a5e6fc885431024ff0316948f75cc6738276f33cc3e92dd25661&amp;mpshare=1&amp;scene=1&amp;srcid=0722lacFTcoG3jda9bA9JOoK&amp;sharer_sharetime=1595402746390&amp;sharer_shareid=a468f7684ed03b370e7298eb88d56e49#rd',
 		None]:
 		print(clearUrl(url))
 
