@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from telegram_util import getWid, cutCaption
+from telegram_util import getWid, cutCaption, clearUrl
 import yaml
 from telegram.ext import Updater
 
@@ -21,6 +21,11 @@ def _test():
 	debug_group.send_message('1 ' + s, parse_mode='markdown')
 	debug_group.send_message('3 ' + m, parse_mode='markdown')
 
+def test2():
+	for url in ['https://www.lgbtqnation.com/2020/07/trump-administration-memo-explains-spot-transgender-woman/#.Xxhk4Z7ztRQ.wechat', 
+		'http://mp.weixin.qq.com/s?__biz=MzUxMzAzMzk5Ng==&mid=2247484807&idx=1&sn=101bde2cf3bfbee2dcbd1e842475e06a&chksm=f95a17e4ce2d9ef27a9dbdd6c59c831b45caa8658ac566cc2d3681216c83b0f9e28a7ed0dc3f&mpshare=1&scene=1&srcid=0723RKjQqOqqKU0gQFh4vs4S&sharer_sharetime=1595435039677&sharer_shareid=f467668849c8544e583567bf8a259f31#rd']:
+		print(clearUrl(url))
 
 if __name__=='__main__':
-	_test()
+	# _test()
+	test2()
