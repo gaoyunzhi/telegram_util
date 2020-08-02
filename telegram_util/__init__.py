@@ -348,4 +348,6 @@ def clearUrl(url):
 		url = url.split('#')[0]
 	if matchKey(url, ['weibo', 'thepaper', 'm.sohu']) and 'id=' not in url: 
 		url = url.split('?')[0]
+	if matchKey(url, ['/s/']):
+		url = url.split('?')[0]
 	return url.strip('/')
