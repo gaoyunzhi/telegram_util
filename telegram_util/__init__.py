@@ -73,6 +73,12 @@ class AlbumResult(object):
 		self.rwid = '' # weibo status only retweet id
 		self.hash = ''
 		self.url = ''
+		self.parse_mode = self._getParseMode()
+
+	def _getParseMode(self):
+		if self.cap_html and 'weibo' not in self.url:
+			return 'HTML'
+		return 'Markdown'
 
 	def empty(self):
 		return (not self.imgs) and (not self.cap) and (not self.video)
