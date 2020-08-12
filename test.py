@@ -4,6 +4,7 @@
 from telegram_util import getWid, cutCaption, clearUrl
 import yaml
 from telegram.ext import Updater
+import web_2_album
 
 with open('credential') as f:
 	credential = yaml.load(f, Loader=yaml.FullLoader)
@@ -29,6 +30,11 @@ def test2():
 		None]:
 		print(clearUrl(url))
 
+def testAlbum():
+	url = 'https://www.pride.com/art/2018/5/10/photographer-empowering-trans-youth-through-art?fbclid=IwAR1WM82jyIovZRmLQwgJtBTExGGy-_py6SnOirDb2_IEjEAxxzqyKCjqLxY#media-gallery-media-1'
+	print(web_2_album.get(url))
+
 if __name__=='__main__':
 	# _test()
-	test2()
+	# test2()
+	testAlbum()
