@@ -14,20 +14,6 @@ import os
 
 name = 'telegram_util'
 
-def parseHtmlElement(item):
-	if isinstance(item, str):
-		return item
-	if item.name == 'br':
-		return '\n'
-	if item.name in ['i', 'b'] and item.text:
-		return '<%s>%s</%s>' % (item.name, item.text, item.name)
-	if item.name == 'a':
-		return str(item)
-	return item.text
-
-def toMsgHtml(soup):
-	return ''.join([parseHtmlElement(item) for item in soup])
-
 def removeOldFiles(dirname, day = 3):
 	try:
 		os.listdir(dirname)
