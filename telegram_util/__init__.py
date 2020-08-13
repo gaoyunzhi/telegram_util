@@ -21,6 +21,8 @@ def parseHtmlElement(item):
 		return '\n'
 	if item.name in ['i', 'b'] and item.text:
 		return '<%s>%s</%s>' % (item.name, item.text, item.name)
+	if item.name == 'a':
+		return str(item)
 	return item.text
 
 def toMsgHtml(soup):
