@@ -174,6 +174,12 @@ def getDisplayChat(chat):
 	else:
 		return chat.title
 
+def getDisplayChatHtml(chat):
+	if chat.username:
+		return '<a href="%s">%s</a>' % ('t.me/' + str(chat.username), chat.title)
+	else:
+		return chat.title
+
 def formatChat(bot, chat_id):
 	try:
 		chat = bot.getChat(chat_id)
@@ -211,6 +217,16 @@ def getDisplayUser(user):
 	if user.username:
 		result += ' (' + user.username + ')'
 	return '[' + result + '](tg://user?id=' + str(user.id) + ')'
+
+def getDisplayUserHtml(user):
+	result = ''
+	if user.first_name:
+		result += user.first_name
+	if user.last_name:
+		result += ' ' + user.last_name
+	if user.username:
+		result += ' (' + user.username + ')'
+	return '<a href="%s">%s</a>' % ('tg://user?id=' + str(user.id), result)
 
 def splitCommand(text):
 	if not text:
