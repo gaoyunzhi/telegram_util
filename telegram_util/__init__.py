@@ -191,7 +191,7 @@ def log_on_fail(debug_group = None, error_to_ignore=[]):
 	def decorate(f):
 		def applicator(*args, **kwargs):
 			try:
-				f(*args,**kwargs)
+				return f(*args,**kwargs)
 			except Exception as e:
 				if str(e) in error_to_ignore:
 					return
