@@ -138,6 +138,8 @@ TO_CLEAN = '#/?'
 def cleanFileName(name):
 	for x in TO_CLEAN:
 		name = name.replace(x, '')
+	if name.split()[0][-1:] == ':':
+		name = name.replace(':', ' ', 1)
 	return name
 
 def getSoup(url):
