@@ -134,7 +134,7 @@ def isCN(title):
 		return True
 	return False
 
-TO_CLEAN = '#/?'
+TO_CLEAN = '#/?-'
 def cleanFileName(name):
 	for x in TO_CLEAN:
 		name = name.replace(x, '')
