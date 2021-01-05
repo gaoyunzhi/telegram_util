@@ -27,6 +27,7 @@ def test2():
 		'http://mp.weixin.qq.com/s?__biz=MzUxMzAzMzk5Ng==&mid=2247484807&idx=1&sn=101bde2cf3bfbee2dcbd1e842475e06a&chksm=f95a17e4ce2d9ef27a9dbdd6c59c831b45caa8658ac566cc2d3681216c83b0f9e28a7ed0dc3f&mpshare=1&scene=1&srcid=0723RKjQqOqqKU0gQFh4vs4S&sharer_sharetime=1595435039677&sharer_shareid=f467668849c8544e583567bf8a259f31#rd',
 		'https://mp.weixin.qq.com/s?__biz=MzA5MDM1MTcyNQ==&amp;mid=2657277726&amp;idx=1&amp;sn=613c0be79aebcd1ba714cbbbae64f66c&amp;chksm=8b9a861cbced0f0af93ef107a5e6fc885431024ff0316948f75cc6738276f33cc3e92dd25661&amp;mpshare=1&amp;scene=1&amp;srcid=0722lacFTcoG3jda9bA9JOoK&amp;sharer_sharetime=1595402746390&amp;sharer_shareid=a468f7684ed03b370e7298eb88d56e49#rd',
 		'https://mp.weixin.qq.com/s/DzSn0oX7nctjnsHRM1DpKQ?url=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FDzSn0oX7nctjnsHRM1DpKQ&share_menu=1&sinainternalbrowser=topnav&mid=4532409046147275&luicode=10000011&lfid=100103type%3D1%26q%3D%E7%90%86%E8%AE%BA&u=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FDzSn0oX7nctjnsHRM1DpKQ',
+		'http://www.infzm.com/wap/#/content/198828',
 		None]:
 		print(clearUrl(url))
 
@@ -36,5 +37,5 @@ def testAlbum():
 
 if __name__=='__main__':
 	# _test()
-	# test2()
+	test2()
 	testAlbum()
