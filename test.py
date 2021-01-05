@@ -38,4 +38,4 @@ def testAlbum():
 if __name__=='__main__':
 	# _test()
 	test2()
-	testAlbum()
+	# testAlbum()
